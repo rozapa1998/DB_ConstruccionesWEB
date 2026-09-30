@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Don Bosco Construcciones — Construimos lo que perdura</title>
+<meta name="description" content="Constructora familiar dedicada a la ejecución de obra en Buenos Aires. Más de 30 años, 40 obras y 175 mil m² construidos para desarrolladores.">
+<link rel="icon" href="img/sitio/favicon.png">
+<link rel="apple-touch-icon" href="img/sitio/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Don Bosco Construcciones — Construimos lo que perdura">
+<meta property="og:description" content="Constructora familiar dedicada a la ejecución de obra en Buenos Aires. Más de 30 años, 40 obras y 175 mil m² construidos.">
+<meta property="og:image" content="img/sitio/compartir.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F1A22; --ink2:#16242F; --ink3:#1D2E3B;
+  --cream:#EDEAE1; --cream2:#E0DBCE; --paper:#F6F4EE;
+  --terra:#A35139; --terra-lt:#C9714F;
+  --slate:#7C8894; --slate-d:#5A6873;
+  --line-d:rgba(237,234,225,.16); --line-l:rgba(15,26,34,.15);
+  --pad:clamp(20px,5vw,72px);
+  --maxw:1440px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:only light;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth; scroll-padding-top:calc(72px + env(safe-area-inset-top,0px)); -webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--cream);
+  font-family:'Archivo',system-ui,-apple-system,'Helvetica Neue',sans-serif;
+  font-size:17px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--terra-lt);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+h1,h2,h3,.disp{font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-optical-sizing:auto;letter-spacing:-0.005em;margin:0}
+h2{font-size:clamp(34px,5.2vw,64px);line-height:1.04}
+h3{font-size:clamp(22px,2.4vw,30px);line-height:1.15}
+p{margin:0 0 1em}
+.lead{font-size:clamp(18px,1.55vw,21px);line-height:1.62;color:rgba(237,234,225,.82);max-width:62ch}
+section.light .lead,section.paper .lead{color:#3A4753}
+.tag{font-size:13.5px;letter-spacing:.01em;color:var(--slate);font-weight:500}
+section.light .tag,section.paper .tag{color:var(--slate-d)}
+.rule{height:1px;background:var(--line-d);border:0;margin:0}
+section.light{background:var(--cream);color:#16242F}
+section.paper{background:var(--paper);color:#16242F}
+.sec{padding-block:clamp(64px,9vw,130px)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(30px,4vw,54px)}
+.sec-head p{margin:0}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:60;transition:background .35s ease,border-color .35s ease,backdrop-filter .35s}
+.nav .in{max-width:var(--maxw);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;gap:32px;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(15,26,34,.93);backdrop-filter:saturate(140%) blur(10px)}
+.nav.solid .in{border-bottom-color:var(--line-d)}
+.nav img{height:42px;width:auto}
+.nav nav{margin-left:auto;display:flex;gap:26px;align-items:center}
+.nav nav a{font-size:15px;text-decoration:none;color:rgba(237,234,225,.86);padding:4px 0;border-bottom:1px solid transparent}
+.nav nav a:hover{color:#fff;border-bottom-color:var(--terra-lt)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:inherit;font-size:15px;font-weight:500;
+  padding:13px 24px;border:1px solid var(--terra);background:var(--terra);color:#fff;text-decoration:none;cursor:pointer;transition:background .25s,border-color .25s,color .25s}
+.btn:hover{background:#8C432E;border-color:#8C432E}
+.btn.ghost{background:transparent;color:var(--cream);border-color:rgba(237,234,225,.45)}
+.btn.ghost:hover{background:rgba(237,234,225,.1);border-color:var(--cream)}
+.btn.sm{padding:10px 18px;font-size:14px}
+.nav-toggle{display:none;background:none;border:0;color:var(--cream);padding:8px;cursor:pointer}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:88svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-slides{position:absolute;inset:0;overflow:hidden}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center 42%;opacity:0;transform:scale(1.06);transition:opacity 1.6s ease}
+.hero-slide.on{opacity:1;animation:heroIn 7s cubic-bezier(.16,.84,.34,1) forwards}
+@keyframes heroIn{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,26,34,.94) 0%,rgba(15,26,34,.55) 42%,rgba(15,26,34,.28) 70%,rgba(15,26,34,.55) 100%)}
+.hero .in{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;padding:0 var(--pad) clamp(36px,5vw,66px)}
+.hero h1{font-size:clamp(44px,8.4vw,116px);line-height:.98;letter-spacing:-0.02em;max-width:14ch}
+.hero .sub{margin-top:22px;font-size:clamp(17px,1.7vw,22px);line-height:1.5;max-width:44ch;color:rgba(237,234,225,.9)}
+.hero .acts{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.hero .credit{position:absolute;right:var(--pad);bottom:clamp(36px,5vw,66px);text-align:right;font-size:13px;line-height:1.5;color:rgba(237,234,225,.6);z-index:2;max-width:40vw}
+
+/* ---------- cifras ---------- */
+.cifras{background:var(--ink2)}
+.cifras .grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.cifras .c{padding:clamp(28px,3.4vw,44px) clamp(14px,2vw,30px);border-left:1px solid var(--line-d)}
+.cifras .c:first-child{border-left:0;padding-left:0}
+.cifras .n{font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(38px,4.6vw,62px);line-height:1;color:var(--cream)}
+.cifras .l{margin-top:10px;font-size:14.5px;color:var(--slate);max-width:20ch}
+
+/* ---------- obras ---------- */
+.sub-label{display:flex;align-items:baseline;gap:20px;margin:clamp(30px,4vw,54px) 0 clamp(18px,2.2vw,30px);padding-bottom:14px;border-bottom:1px solid var(--line-d)}
+.sub-label:first-child{margin-top:0}
+.sub-label h3{font-size:clamp(23px,2.5vw,32px);line-height:1}
+.sub-label span{margin-left:auto;font-size:14px;color:var(--slate)}
+.filtros{display:flex;gap:8px;flex-wrap:wrap}
+.filtro{font-family:inherit;font-size:14.5px;color:rgba(237,234,225,.7);background:transparent;border:1px solid var(--line-d);padding:9px 18px;cursor:pointer;transition:.2s}
+.filtro:hover{color:#fff;border-color:rgba(237,234,225,.4)}
+.filtro[aria-pressed="true"]{background:var(--cream);border-color:var(--cream);color:var(--ink)}
+.obras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,34px) clamp(16px,2vw,28px)}
+.obra{display:flex;flex-direction:column;text-align:left;background:none;border:0;padding:0;color:inherit;font:inherit;cursor:pointer}
+.obra .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--ink3)}
+.obra .ph img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.3,1),filter .4s;filter:brightness(.94)}
+.obra:hover .ph img,.obra:focus-visible .ph img{transform:scale(1.045);filter:brightness(1.03)}
+.obra .est{position:absolute;left:0;bottom:0;display:flex;align-items:center;gap:8px;background:rgba(15,26,34,.82);padding:8px 14px;font-size:12.5px;letter-spacing:.02em}
+.obra .est i{width:7px;height:7px;border-radius:50%;background:var(--terra-lt);display:block}
+.obra .est.fin i{background:#9FB0A6}
+.obra .est.ini i{background:var(--slate)}
+.obra .name{margin-top:16px;font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(21px,1.8vw,27px);line-height:1.15;display:inline-block;border-bottom:1px solid transparent;transition:border-color .25s}
+.obra:hover .name{border-bottom-color:var(--terra-lt)}
+.obra .meta{margin-top:7px;font-size:14px;color:var(--slate);display:block}
+.obra .datos{margin-top:11px;padding-top:10px;border-top:1px solid var(--line-d);display:flex;gap:26px;font-size:14px;color:rgba(237,234,225,.84)}
+.obra .datos span{display:flex;flex-direction:column;gap:2px}
+.obra .datos i{font-style:normal;font-size:12px;color:var(--slate)}
+
+/* ---------- ficha ---------- */
+.ficha{position:fixed;inset:0;z-index:90;background:var(--ink);display:none;overflow-y:auto;overscroll-behavior:contain}
+.ficha.open{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.ficha-bar{position:sticky;top:0;z-index:5;background:rgba(15,26,34,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-d)}
+.ficha-bar .in{max-width:var(--maxw);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;gap:20px}
+.ficha-bar .t{font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(19px,2vw,26px)}
+.ficha-bar button{margin-left:auto}
+.ficha-cols{max-width:var(--maxw);margin:0 auto;padding:clamp(24px,3.5vw,54px) var(--pad) clamp(60px,8vw,110px);display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,1fr);gap:clamp(24px,3.5vw,56px);align-items:start}
+.gal figure{margin:0 0 clamp(14px,1.8vw,24px)}
+.gal img{width:100%;height:auto;background:var(--ink3)}
+.gal figcaption{margin-top:9px;font-size:13.5px;color:var(--slate)}
+.panel{position:sticky;top:96px;background:var(--cream);color:#16242F;padding:clamp(22px,2.4vw,34px)}
+.panel h3{font-size:clamp(24px,2.6vw,34px);line-height:1.08}
+.panel .ub{margin-top:8px;font-size:15px;color:var(--slate-d)}
+.panel dl{margin:26px 0 0;border-top:2px solid #16242F}
+.panel dt{font-size:13px;color:var(--slate-d);padding-top:14px}
+.panel dd{margin:3px 0 14px;font-size:16.5px;font-weight:500;border-bottom:1px solid var(--line-l);padding-bottom:13px;line-height:1.35}
+.panel .am{margin:22px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.panel .am li{font-size:13.5px;border:1px solid var(--line-l);padding:6px 12px}
+.panel .cta{margin-top:26px;width:100%}
+.planos{margin-top:clamp(28px,3vw,44px)}
+.planos h4{font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:22px;margin:0 0 16px}
+.planos .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.planos figure{margin:0;background:#fff;padding:10px}
+.planos img{width:100%}
+.planos figcaption{margin-top:8px;font-size:12.5px;color:var(--slate-d);text-align:center}
+.nota-render{font-size:13px;color:var(--slate);margin-top:6px}
+
+/* ---------- nosotros ---------- */
+.nos{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,4vw,70px);align-items:start}
+p.destacado{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;font-variation-settings:'opsz' 12;font-size:clamp(21px,2.15vw,28px);line-height:1.35;color:#16242F;border-left:2px solid var(--terra);padding-left:22px;margin:30px 0}
+.strip-title{margin:clamp(34px,4vw,56px) 0 18px;font-size:clamp(20px,2vw,26px)}
+.nos .quote{font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(26px,3vw,40px);line-height:1.18;margin:0 0 26px}
+.nos p{max-width:56ch;color:#3A4753}
+.nos-fig{margin:0}
+.nos > p.destacado{grid-column:1/-1;margin:clamp(8px,1.5vw,20px) 0 0;max-width:920px;font-size:clamp(22px,2.4vw,31px)}
+.nos-fig img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.nos-fig figcaption{margin-top:10px;font-size:13.5px;color:var(--slate-d)}
+.valores{margin-top:clamp(40px,5vw,72px);display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid #16242F}
+.valores div{padding:24px 28px 22px 28px;border-right:1px solid var(--line-l);border-bottom:1px solid var(--line-l)}
+.valores div:nth-child(4n+1){padding-left:0}
+.valores div:nth-child(4n){padding-right:0}
+.valores div:nth-child(4n){border-right:0}
+.valores div:nth-last-child(-n+4){border-bottom:0}
+.valores h4{margin:0 0 8px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:21px}
+.valores p{margin:0;font-size:14.5px;line-height:1.55;color:#4A5763}
+
+/* ---------- servicios ---------- */
+.serv{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line-d)}
+.serv article{padding:clamp(26px,3vw,44px) clamp(20px,2.6vw,46px) clamp(26px,3vw,44px) 0;border-bottom:1px solid var(--line-d)}
+.serv article:nth-child(odd){border-right:1px solid var(--line-d);padding-right:clamp(26px,3vw,54px)}
+.serv article:nth-child(even){padding-left:clamp(26px,3vw,54px);padding-right:0}
+.serv h3{margin-bottom:12px}
+.serv p{margin:0;color:rgba(237,234,225,.74);font-size:16px;max-width:46ch}
+
+/* ---------- equipo ---------- */
+.equipo{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(14px,1.8vw,26px)}
+.equipo figure{margin:0}
+.equipo img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.equipo .n{margin-top:14px;font-size:16.5px;font-weight:500}
+.equipo .r{font-size:14px;color:var(--slate-d)}
+.obra-strip{margin-top:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,24px)}
+.obra-strip img{width:100%;aspect-ratio:3/2;object-fit:cover}
+
+/* ---------- clientes ---------- */
+.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:clamp(30px,4.4vw,70px) clamp(36px,5.6vw,88px);padding-top:clamp(12px,2vw,26px);border-top:1px solid var(--line-l)}
+.logos div{display:flex;align-items:center;justify-content:center;min-height:64px}
+.logos img{width:auto;max-width:min(200px,40vw);object-fit:contain;opacity:.85}
+@media (max-width:720px){.logos img{transform:scale(.85);transform-origin:center}}
+
+
+.obra[hidden]{display:none!important}
+.obra.dest{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);grid-template-rows:1fr auto auto auto auto;column-gap:clamp(26px,3.4vw,56px);align-items:end}
+.obra.dest .ph{grid-column:1;grid-row:1/6;aspect-ratio:16/10}
+.obra.dest .name{grid-column:2;grid-row:2;margin-top:0;font-size:clamp(32px,3.6vw,50px);line-height:1.02}
+.obra.dest .meta{grid-column:2;grid-row:3;margin-top:10px;font-size:15px}
+.obra.dest .tipo{grid-column:2;grid-row:4;margin-top:18px;font-size:16px;line-height:1.55;color:rgba(237,234,225,.78);max-width:34ch}
+.obra.dest .datos{grid-column:2;grid-row:5;margin-top:22px;font-size:15px}
+.obra .tipo{display:none}
+.obra.dest .tipo{display:block}
+@media (max-width:720px){
+  .obra.dest{display:flex;flex-direction:column;align-items:stretch}
+  .obra.dest .ph{aspect-ratio:4/3}
+  .obra.dest .name{margin-top:16px;font-size:clamp(28px,8vw,36px)}
+  .obra.dest .tipo{margin-top:12px;font-size:15px}
+  .obra.dest .datos{margin-top:12px}
+}
+
+/* ---------- partnership ---------- */
+.partner{display:grid;grid-template-columns:minmax(260px,.75fr) minmax(0,1.25fr);gap:clamp(28px,4vw,66px);align-items:center}
+.partner .marca{background:var(--ink2);border:1px solid var(--line-d);padding:clamp(30px,4vw,54px);display:flex;align-items:center;justify-content:center}
+.partner .marca img{max-width:190px;width:100%;height:auto}
+.partner h3{font-size:clamp(26px,3vw,40px)}
+.partner p{color:rgba(237,234,225,.8);max-width:58ch;font-size:16.5px}
+.partner .obras-lista{margin:22px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;border-top:1px solid var(--line-d)}
+.partner .obras-lista li{padding:12px 0;border-bottom:1px solid var(--line-d);font-size:15.5px;display:flex;justify-content:space-between;gap:14px}
+.partner .obras-lista span{color:var(--slate);white-space:nowrap}
+.partner .links{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap;font-size:15.5px}
+.partner .links a{text-decoration:none;border-bottom:1px solid rgba(237,234,225,.32);padding-bottom:3px}
+.partner .links a:hover{border-bottom-color:var(--terra-lt);color:#fff}
+@media (max-width:860px){.partner{grid-template-columns:1fr}.partner .obras-lista{grid-template-columns:1fr}}
+
+/* ---------- contacto ---------- */
+.cont{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.85fr);gap:clamp(32px,5vw,80px);align-items:start}
+.datos{margin:34px 0 0;display:grid;gap:0;border-top:1px solid var(--line-d)}
+.datos div{display:flex;gap:20px;padding:16px 0;border-bottom:1px solid var(--line-d);align-items:baseline}
+.datos dt{min-width:104px;font-size:13.5px;color:var(--slate)}
+.datos dd{margin:0;font-size:clamp(17px,1.5vw,20px)}
+.datos a{text-decoration:none;border-bottom:1px solid rgba(237,234,225,.3)}
+.datos a:hover{border-bottom-color:var(--terra-lt)}
+form{display:grid;gap:18px}
+.campo label{display:block;font-size:13.5px;color:var(--slate);margin-bottom:7px}
+.campo input,.campo textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(237,234,225,.28);color:var(--cream);
+  font-family:inherit;font-size:16.5px;padding:10px 0;transition:border-color .25s}
+.campo textarea{resize:vertical;min-height:96px}
+.campo input:focus,.campo textarea:focus{outline:none;border-bottom-color:var(--terra-lt)}
+.campo input::placeholder,.campo textarea::placeholder{color:rgba(237,234,225,.32)}
+.oculto{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.estado{font-size:14.5px;min-height:1px;margin:0}
+.estado.ok{color:var(--terra-lt)}
+.estado.err{color:rgba(237,234,225,.8)}
+.estado a{color:var(--terra-lt)}
+
+footer{background:var(--ink2);padding:clamp(34px,4vw,54px) 0;border-top:1px solid var(--line-d)}
+footer .in{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad);display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+footer img{height:40px;width:auto}
+footer .sl{font-family:'Bodoni Moda',Georgia,serif;font-size:19px}
+footer .cp{margin-left:auto;font-size:13.5px;color:var(--slate)}
+
+@media (max-width:1080px){
+  .obras-grid{grid-template-columns:repeat(2,1fr)}
+  .valores{grid-template-columns:repeat(2,1fr)}
+  .valores div{padding:22px 18px 20px 18px}
+  .valores div:nth-child(2n+1){padding-left:0}
+  .valores div:nth-child(2n){padding-right:0}
+  .valores div:nth-child(2n){border-right:0}
+  .valores div:nth-child(4n){border-right:0}
+  .valores div:nth-last-child(-n+4){border-bottom:1px solid var(--line-l)}
+  .valores div:nth-last-child(-n+2){border-bottom:0}
+  .equipo{grid-template-columns:repeat(3,1fr)}
+    .ficha-cols{grid-template-columns:1fr}
+  .panel{position:static;order:-1}
+  .nos{grid-template-columns:1fr}
+  .cont{grid-template-columns:1fr}
+  .cifras .grid{grid-template-columns:repeat(2,1fr)}
+  .cifras .c:nth-child(3){border-left:0;padding-left:0}
+}
+@media (max-width:720px){
+  body{font-size:16px}
+  .nav nav{display:none}
+  .nav nav.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:rgba(15,26,34,.98);border-bottom:1px solid var(--line-d);padding:8px var(--pad) 18px}
+  .nav nav.open a{padding:12px 0;width:100%;border-bottom:1px solid var(--line-d)}
+  .nav nav.open .btn{margin-top:12px}
+  .nav-toggle{display:block;margin-left:auto}
+  .obras-grid{grid-template-columns:1fr}
+  .serv{grid-template-columns:1fr}
+  .serv article,.serv article:nth-child(odd),.serv article:nth-child(even){padding:24px 0;border-right:0}
+  .equipo{grid-template-columns:repeat(2,1fr)}
+  .obra-strip{grid-template-columns:1fr}
+  .hero .credit{display:none}
+  .hero h1{font-size:clamp(40px,11vw,60px)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav"><div class="in">
+  <a href="#inicio" aria-label="Don Bosco Construcciones, inicio"><img src="img/sitio/imagen-01.png" alt="Don Bosco Construcciones"></a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <nav id="menu">
+    <a href="#obras">Obras</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a>
+    <a href="#equipo">Equipo</a><a class="btn sm" href="#contacto">Contactar</a>
+  </nav>
+</div></header>
+
+<main id="inicio">
+<section class="hero">
+  <div class="hero-slides" id="heroSlides" aria-hidden="true">
+    <div class="hero-slide on" style="background-image:url('img/hero/hero-01.jpg')"></div>
+    <div class="hero-slide" data-bg="img/hero/hero-02.jpg"></div>
+    <div class="hero-slide" data-bg="img/hero/hero-03.jpg"></div>
+    <div class="hero-slide" data-bg="img/hero/hero-04.jpg"></div>
+    <div class="hero-slide" data-bg="img/hero/hero-05.jpg"></div>
+    <div class="hero-slide" data-bg="img/hero/hero-06.jpg"></div>
+    <div class="hero-slide" data-bg="img/hero/hero-07.jpg"></div>
+    <div class="hero-slide" data-bg="img/hero/hero-08.jpg"></div>
+  </div>
+  <div class="in">
+    <h1>Construimos lo que perdura</h1>
+    <p class="sub">Ejecutamos proyectos con la cercanía, la lealtad y la profesionalidad de una constructora familiar. Hace más de treinta años que los desarrolladores de Buenos Aires nos confían sus obras.</p>
+    <div class="acts"><a class="btn" href="#obras">Ver las obras</a><a class="btn ghost" href="#contacto">Contanos tu proyecto</a></div>
+  </div>
+</section>
+
+<section class="cifras"><div class="wrap"><div class="grid"><div class="c"><div class="n">30+</div><div class="l">Años ejecutando obra para terceros</div></div><div class="c"><div class="n">40</div><div class="l">Obras ejecutadas</div></div><div class="c"><div class="n">175 mil</div><div class="l">Metros cuadrados construidos</div></div><div class="c"><div class="n">100%</div><div class="l">Obras entregadas en tiempo y forma</div></div></div></div></section>
+
+<section class="sec" id="obras"><div class="wrap">
+  <div class="sec-head">
+    <div><h2>Obras</h2><p class="lead" style="margin-top:14px">Viviendas multifamiliares, oficinas, locales comerciales y hotelería. Tocá cualquier obra para ver la ficha completa, con fotos y planos.</p></div>
+
+  </div>
+  <div id="grid"><div class="sub-label"><h3>En curso</h3></div><div class="obras-grid"><button class="obra dest" data-g="obra" data-id="huidobro" type="button">
+  <span class="ph"><img src="img/obras/huidobro/foto-01.jpg" alt="Casa Huidobro" loading="lazy"><span class="est "><i></i>En construcción</span></span>
+  <span class="name">Casa Huidobro</span>
+  <span class="meta">Saavedra, CABA</span>
+  <span class="tipo">Edificio de viviendas en PH, PB y 7 pisos + 1 SS. Con jardín, piscina con solárium, SUM y gimnasio.</span>
+  <span class="datos"><span><i>Superficie</i>5.679 m²</span><span><i>Plazo de obra</i>30 meses</span></span>
+</button><button class="obra" data-g="obra" data-id="cacique" type="button">
+  <span class="ph"><img src="img/obras/cacique-portada.jpg" alt="Complejo Cacique" loading="lazy"><span class="est "><i></i>En construcción</span></span>
+  <span class="name">Complejo Cacique</span>
+  <span class="meta">CABA</span>
+  <span class="datos"><span><i>Superficie</i>7.200 m²</span><span><i>Plazo de obra</i>40 meses</span></span>
+</button><button class="obra" data-g="obra" data-id="scalabrini550" type="button">
+  <span class="ph"><img src="img/obras/scalabrini550-portada.jpg" alt="Scalabrini Ortiz 550" loading="lazy"><span class="est "><i></i>En construcción</span></span>
+  <span class="name">Scalabrini Ortiz 550</span>
+  <span class="meta">CABA</span>
+  <span class="datos"><span><i>Superficie</i>3.963 m²</span><span><i>Plazo de obra</i>30 meses</span></span>
+</button><button class="obra" data-g="obra" data-id="vistana" type="button">
+  <span class="ph"><img src="img/obras/vistana-portada.jpg" alt="Edificio Vistana" loading="lazy"><span class="est "><i></i>En construcción</span></span>
+  <span class="name">Edificio Vistana</span>
+  <span class="meta">Bella Vista</span>
+  <span class="datos"><span><i>Superficie</i>5.943 m²</span><span><i>Plazo de obra</i>40 meses</span></span>
+</button><button class="obra" data-g="obra" data-id="sucre" type="button">
+  <span class="ph"><img src="img/obras/sucre-portada.jpg" alt="Casa Sucre" loading="lazy"><span class="est "><i></i>En construcción</span></span>
+  <span class="name">Casa Sucre</span>
+  <span class="meta">Belgrano, CABA</span>
+  <span class="datos"><span><i>Superficie</i>6.200 m²</span><span><i>Plazo de obra</i>30 meses</span></span>
+</button><button class="obra" data-g="obra" data-id="aimara" type="button">
+  <span class="ph"><img src="img/obras/aimara-portada.jpg" alt="Edificio Aimará" loading="lazy"><span class="est "><i></i>En construcción</span></span>
+  <span class="name">Edificio Aimará</span>
+  <span class="meta">Las Cañitas, CABA</span>
+  <span class="datos"><span><i>Superficie</i>3.925 m²</span><span><i>Plazo de obra</i>40 meses</span></span>
+</button><button class="obra" data-g="obra" data-id="larrea" type="button">
+  <span class="ph"><img src="img/obras/larrea-portada.jpg" alt="Casa Larrea" loading="lazy"><span class="est ini"><i></i>Por iniciar</span></span>
+  <span class="name">Casa Larrea</span>
+  <span class="meta">CABA</span>
+  <span class="datos"><span><i>Superficie</i>3.111 m²</span><span><i>Plazo de obra</i>30 meses</span></span>
+</button><!-- OCULTA por el momento: sacar el atributo hidden para volver a mostrarla -->
+<button class="obra" data-g="obra" data-id="cordoba4309" type="button" hidden>
+  <span class="ph"><img src="img/obras/cordoba4309-portada.jpg" alt="Av. Córdoba 4309" loading="lazy"><span class="est ini"><i></i>Por iniciar</span></span>
+  <span class="name">Av. Córdoba 4309</span>
+  <span class="meta">Palermo, CABA</span>
+  <span class="datos"><span><i>Superficie</i>3.235 m²</span><span><i>Plazo de obra</i>30 meses</span></span>
+</button><!-- OCULTA por el momento: sacar el atributo hidden para volver a mostrarla -->
+<button class="obra" data-g="obra" data-id="juncal" type="button" hidden>
+  <span class="ph"><img src="img/obras/juncal-portada.jpg" alt="Casa Juncal" loading="lazy"><span class="est ini"><i></i>Por iniciar</span></span>
+  <span class="name">Casa Juncal</span>
+  <span class="meta">CABA</span>
+  <span class="datos"><span><i>Superficie</i>3.110 m²</span><span><i>Plazo de obra</i>30 meses</span></span>
+</button></div><div class="sub-label"><h3>Terminados</h3></div><div class="obras-grid"><button class="obra" data-g="fin" data-id="alberdi833" type="button">
+  <span class="ph"><img src="img/obras/alberdi833-portada.jpg" alt="Alberdi 833" loading="lazy"><span class="est fin"><i></i>Finalizada</span></span>
+  <span class="name">Alberdi 833</span>
+  <span class="meta">CABA</span>
+  <span class="datos"><span><i>Superficie</i>14.600 m²</span><span><i>Plazo de obra</i>36 meses</span></span>
+</button><button class="obra" data-g="fin" data-id="corrientes3401" type="button">
+  <span class="ph"><img src="img/obras/corrientes3401-portada.jpg" alt="Av. Corrientes 3401" loading="lazy"><span class="est fin"><i></i>Finalizada</span></span>
+  <span class="name">Av. Corrientes 3401</span>
+  <span class="meta">CABA</span>
+  <span class="datos"><span><i>Superficie</i>19.600 m²</span><span><i>Plazo de obra</i>40 meses</span></span>
+</button><button class="obra" data-g="fin" data-id="arricau" type="button">
+  <span class="ph"><img src="img/obras/arricau-portada.jpg" alt="Paseo Arricau" loading="lazy"><span class="est fin"><i></i>Finalizada</span></span>
+  <span class="name">Paseo Arricau</span>
+  <span class="meta">Don Torcuato</span>
+  <span class="datos"><span><i>Superficie</i>9.830 m²</span><span><i>Plazo de obra</i>30 meses</span></span>
+</button><button class="obra" data-g="fin" data-id="maure4008" type="button">
+  <span class="ph"><img src="img/obras/maure4008-portada.jpg" alt="Maure 4008" loading="lazy"><span class="est fin"><i></i>Finalizada</span></span>
+  <span class="name">Maure 4008</span>
+  <span class="meta">CABA</span>
+  <span class="datos"><span><i>Superficie</i>2.164 m²</span><span><i>Plazo de obra</i>24 meses</span></span>
+</button><button class="obra" data-g="fin" data-id="beruti" type="button">
+  <span class="ph"><img src="img/obras/beruti-portada.jpg" alt="Beruti 2783" loading="lazy"><span class="est fin"><i></i>Finalizada</span></span>
+  <span class="name">Beruti 2783</span>
+  <span class="meta">CABA</span>
+  <span class="datos"><span><i>Superficie</i>1.747 m²</span><span><i>Plazo de obra</i>24 meses</span></span>
+</button><button class="obra" data-g="fin" data-id="hotel_iru" type="button">
+  <span class="ph"><img src="img/obras/hotel_iru-portada.jpg" alt="Hotel Irú" loading="lazy"><span class="est fin"><i></i>Finalizada</span></span>
+  <span class="name">Hotel Irú</span>
+  <span class="meta">Misiones</span>
+  <span class="datos"><span><i>Superficie</i>7.800 m²</span><span><i>Plazo de obra</i>24 meses</span></span>
+</button></div></div>
+</div></section>
+
+<section class="sec light" id="nosotros"><div class="wrap">
+  <div class="nos">
+    <div>
+      <p class="tag">Nosotros</p>
+      <p class="quote">Empezamos con una obra y un apellido.</p>
+      <p>Don Bosco Construcciones nació de una idea simple: una obra bien ejecutada es la mejor carta de presentación. Con cada proyecto ganamos la confianza de los desarrolladores para asumir obras más grandes y más complejas.</p>
+      <p>Somos una empresa con una sólida experiencia en el mercado. Ofrecemos un servicio integral haciendo foco en la calidad, la seguridad y la confiabilidad, para que la eficiencia y el compromiso sean los pilares del proceso.</p>
+      <p>Nunca cambiamos la forma de trabajar del primer día: estar presentes en la obra, resolver en el lugar y responder por lo que entregamos.</p>
+      <p>Hoy son más de treinta años, cuarenta obras ejecutadas y 175 mil metros cuadrados construidos para más de treinta desarrolladores.</p>
+    </div>
+    <figure class="nos-fig"><img src="img/sitio/imagen-03.jpg" alt="El equipo de Don Bosco revisando planos en obra" loading="lazy">
+      <figcaption>Revisión de planos en obra.</figcaption></figure>
+    <p class="destacado">En Don Bosco valoramos compartir con nuestros clientes la satisfacción y el orgullo de ver los proyectos terminados, sabiendo que no son meros edificios, sino espacios que cambian la vida de quienes los habitan.</p>
+  </div>
+  <div class="valores"><div><h4>Calidad</h4><p>Profesionalismo, honestidad y compromiso en cada etapa.</p></div><div><h4>Seguridad</h4><p>Cuidamos a quienes trabajan en obra y cumplimos los protocolos.</p></div><div><h4>Confiabilidad</h4><p>Un servicio integral que el cliente puede dar por hecho.</p></div><div><h4>Eficiencia</h4><p>Cada recurso y cada semana de obra, aprovechados.</p></div><div><h4>Cumplimiento</h4><p>Cada obra asumida es un compromiso de plazo y de calidad.</p></div><div><h4>Lealtad</h4><p>Jugamos para el mismo lado que el desarrollador, siempre.</p></div><div><h4>Cercanía</h4><p>Diálogo constante con el cliente durante todo el proceso.</p></div><div><h4>Trabajo en equipo</h4><p>Colaboración entre oficina técnica y obra para resolver mejor.</p></div></div>
+</div></section>
+
+<section class="sec" id="servicios"><div class="wrap">
+  <div class="sec-head"><div><h2>Qué hacemos</h2><p class="lead" style="margin-top:14px">Acompañamos al desarrollador desde el primer replanteo hasta la entrega del edificio.</p></div></div>
+  <div class="serv"><article><h3>Construcción</h3><p>Ejecutamos obras de 3.000 a 30.000 m², en su gran mayoría viviendas multifamiliares en propiedad horizontal.</p></article><article><h3>Gerenciamiento</h3><p>Nos hacemos cargo del desarrollo y la ejecución integral del proyecto, de principio a fin.</p></article><article><h3>Asistencia técnica</h3><p>Un equipo multidisciplinario que resuelve los problemas de obra en forma activa y concreta.</p></article><article><h3>Finalización y control</h3><p>Supervisamos cada etapa hasta la entrega, con el estándar de calidad que esperamos de nosotros.</p></article></div>
+</div></section>
+
+<section class="sec light" id="equipo"><div class="wrap">
+  <div class="sec-head"><div><h2>El equipo</h2><p class="lead" style="margin-top:14px">Gente que conoce la obra, no solo el plano.</p></div></div>
+  <div class="equipo"><figure><img src="img/sitio/imagen-04.jpg" alt="Ing. Juan Lemos" loading="lazy"><figcaption><div class="n">Ing. Juan Lemos</div><div class="r">Presidente, CEO</div></figcaption></figure><figure><img src="img/sitio/imagen-05.jpg" alt="Mariano Cingolani" loading="lazy"><figcaption><div class="n">Mariano Cingolani</div><div class="r">COO</div></figcaption></figure><figure><img src="img/sitio/imagen-06.jpg" alt="Victor Hugo Benitez Uzcat" loading="lazy"><figcaption><div class="n">Victor Hugo Benitez Uzcat</div><div class="r">Ingeniero</div></figcaption></figure><figure><img src="img/sitio/imagen-07.jpg" alt="Victoria Tartaglia" loading="lazy"><figcaption><div class="n">Victoria Tartaglia</div><div class="r">Arquitecta</div></figcaption></figure><figure><img src="img/sitio/imagen-08.jpg" alt="Gabriela Varela" loading="lazy"><figcaption><div class="n">Gabriela Varela</div><div class="r">CFO</div></figcaption></figure></div>
+  <h3 class="strip-title">Nuestro equipo en obra</h3>
+  <div class="obra-strip"><img src="img/sitio/imagen-09.jpg" alt="Equipo de Don Bosco en obra" loading="lazy"><img src="img/sitio/imagen-10.jpg" alt="Equipo de Don Bosco en obra" loading="lazy"><img src="img/sitio/imagen-11.jpg" alt="Equipo de Don Bosco en obra" loading="lazy"></div>
+</div></section>
+
+<section class="sec paper" id="clientes"><div class="wrap">
+  <div class="sec-head"><div><h2>Con quiénes trabajamos</h2><p class="lead" style="margin-top:14px">Desarrolladores y estudios de arquitectura que confiaron la ejecución de sus proyectos en nosotros.</p></div></div>
+  <div class="logos"><div><img src="img/sitio/imagen-12.png" alt="Grupo Briones" style="height:40px" loading="lazy"></div><div><img src="img/sitio/imagen-13.png" alt="Grupo 1880" style="height:60px" loading="lazy"></div><div><img src="img/sitio/imagen-14.png" alt="Larguia Arquitectos" style="height:40px" loading="lazy"></div><div><img src="img/sitio/imagen-15.png" alt="BAH Arquitectos" style="height:38px" loading="lazy"></div><div><img src="img/sitio/imagen-16.png" alt="BMA" style="height:40px" loading="lazy"></div><div><img src="img/sitio/imagen-17.png" alt="Cacique Desarrollos" style="height:50px" loading="lazy"></div><div><img src="img/sitio/imagen-18.png" alt="Landes Desarrollos" style="height:64px" loading="lazy"></div><div><img src="img/sitio/imagen-19.png" alt="Accor" style="height:56px" loading="lazy"></div><div><img src="img/sitio/imagen-20.png" alt="Cliente" style="height:50px" loading="lazy"></div></div>
+</div></section>
+
+<section class="sec" id="partnership"><div class="wrap">
+  <div class="partner">
+    <div class="marca"><img src="img/sitio/imagen-21.png" alt="Shape Developers"></div>
+    <div>
+      <p class="tag" style="color:var(--terra-lt)">Partnership</p>
+      <h3 style="margin-top:12px">Shape Developers</h3>
+      <p style="margin-top:16px">Desarrolladora con base en Buenos Aires, enfocada en vivienda residencial. Ellos desarrollan y comercializan, nosotros ejecutamos la obra. Compartimos proyectos como Ruiz Huidobro 3075 y Larrea 838.</p>
+      <ul class="obras-lista">
+        <li>Ruiz Huidobro 3075 <span>Saavedra</span></li>
+        <li>Larrea 838 <span>Recoleta</span></li>
+      </ul>
+      <p class="links">
+        <a href="https://www.shapedevelopers.com.ar" target="_blank" rel="noopener">shapedevelopers.com.ar</a>
+        <a href="https://www.instagram.com/shapedevelopers/" target="_blank" rel="noopener">Instagram</a>
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="contacto"><div class="wrap">
+  <div class="cont">
+    <div>
+      <h2>Contanos tu proyecto</h2>
+      <p class="lead" style="margin-top:16px">Escribinos y te respondemos con una propuesta de ejecución o una visita a obra, según lo que necesites.</p>
+      <dl class="datos">
+        <div><dt>Teléfono</dt><dd><a href="tel:+541147802690">+54 11 4780-2690</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:Info@construccionesdb.com">Info@construccionesdb.com</a></dd></div>
+        <div><dt>Oficina</dt><dd>Tucumán 141, CABA</dd></div>
+        <div><dt>Zona</dt><dd>Buenos Aires y alrededores</dd></div>
+      </dl>
+    </div>
+    <form id="form" name="contacto" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contacto">
+      <p class="oculto"><label>No completar: <input name="bot-field"></label></p>
+      <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required></div>
+      <div class="campo"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="tu@email.com" required></div>
+      <div class="campo"><label for="mensaje">Tu proyecto</label><textarea id="mensaje" name="mensaje" rows="4" placeholder="Tipo de obra, ubicación, superficie y plazos estimados" required></textarea></div>
+      <button class="btn" type="submit">Enviar consulta</button>
+      <p class="estado" id="estado" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<div class="ficha" id="ficha" role="dialog" aria-modal="true" aria-labelledby="fichaTitulo">
+  <div class="ficha-bar"><div class="in">
+    <span class="t" id="fichaTitulo"></span>
+    <button class="btn ghost sm" id="cerrarFicha" type="button">Cerrar</button>
+  </div></div>
+  <div class="ficha-cols">
+    <div><div class="gal" id="gal"></div><div class="planos" id="planosWrap"></div></div>
+    <aside class="panel" id="panel"></aside>
+  </div>
+</div>
+
+<footer><div class="in">
+  <img src="img/sitio/imagen-22.png" alt="">
+  <span class="sl">Construimos lo que perdura</span>
+  <span class="cp">© 2026 Don Bosco Construcciones</span>
+</div></footer>
+
+<script>
+(function(){
+  var OBRAS = [{"id": "huidobro", "nombre": "Casa Huidobro", "estadoLabel": "En construcción", "ub": "Av. Ruiz Huidobro 3075, Saavedra, CABA", "specs": [["Tipología", "Edificio de viviendas en PH, PB y 7 pisos + 1 SS"], ["Plazo de obra", "30 meses"], ["Superficie", "5.679 m²"]], "amen": ["Jardín en planta baja", "Piscina con solárium y deck", "Parrillas al aire libre", "SUM para reuniones o trabajo", "Gimnasio", "Local comercial en PB"], "render": true, "nota": "", "gal": [{"s": "img/obras/huidobro/foto-01.jpg", "c": "Fachada al atardecer"}, {"s": "img/sitio/imagen-23.jpg", "c": "Jardín en planta baja"}, {"s": "img/sitio/imagen-24.jpg", "c": "Piscina con solárium y deck"}, {"s": "img/sitio/imagen-25.jpg", "c": "SUM y expansión"}, {"s": "img/sitio/imagen-26.jpg", "c": "Living con vista abierta"}], "planos": [{"s": "img/sitio/imagen-27.jpg", "c": "Planta baja"}, {"s": "img/sitio/imagen-28.jpg", "c": "Pisos 2 a 4"}, {"s": "img/sitio/imagen-29.jpg", "c": "Azotea — Piso 8"}]}, {"id": "cacique", "nombre": "Complejo Cacique", "estadoLabel": "En construcción", "ub": "Av. Scalabrini Ortiz 1037 / Aráoz 1038, CABA", "specs": [["Tipología", "2 torres de viviendas, PB y 14 pisos + 1 SS"], ["Plazo de obra", "40 meses"], ["Superficie", "7.200 m²"]], "amen": ["Cowork", "Gimnasio", "SUM", "Terraza con parrillas", "Bicicletero"], "render": true, "nota": "", "gal": [{"s": "img/obras/cacique/foto-01.jpg", "c": "Fachada al anochecer"}, {"s": "img/sitio/imagen-30.jpg", "c": "El conjunto"}, {"s": "img/sitio/imagen-31.jpg", "c": "Terraza con parrillas"}, {"s": "img/sitio/imagen-32.jpg", "c": "Cowork"}, {"s": "img/sitio/imagen-33.jpg", "c": "Living comedor"}], "planos": []}, {"id": "scalabrini550", "nombre": "Scalabrini Ortiz 550", "estadoLabel": "En construcción", "ub": "Av. Scalabrini Ortiz 550, CABA", "specs": [["Tipología", "Torre de viviendas, PB y 12 pisos + 1 SS"], ["Plazo de obra", "30 meses"], ["Superficie", "3.963 m²"]], "amen": ["Terraza con piscina y solárium", "Hall de acceso"], "render": true, "nota": "", "gal": [{"s": "img/obras/scalabrini550/foto-01.jpg", "c": "Fachada sobre Scalabrini Ortiz"}, {"s": "img/sitio/imagen-34.jpg", "c": "Fachada en contrapicado"}, {"s": "img/sitio/imagen-35.jpg", "c": "Terraza con piscina"}, {"s": "img/sitio/imagen-36.jpg", "c": "Hall de acceso"}, {"s": "img/sitio/imagen-37.jpg", "c": "Living comedor"}], "planos": []}, {"id": "vistana", "nombre": "Edificio Vistana", "estadoLabel": "En construcción", "ub": "Nuevo Bella Vista, Bella Vista", "specs": [["Tipología", "Complejo de viviendas en PH, PB y 3 pisos + 1 SS"], ["Plazo de obra", "40 meses"], ["Superficie", "5.943 m²"]], "amen": [], "render": true, "nota": "", "gal": [{"s": "img/obras/vistana/foto-01.jpg", "c": "Vista desde el parque"}, {"s": "img/sitio/imagen-38.jpg", "c": "Frente a la laguna de Nuevo Bella Vista"}, {"s": "img/sitio/imagen-39.jpg", "c": "Balcón al atardecer"}, {"s": "img/sitio/imagen-40.jpg", "c": "Living comedor"}], "planos": [{"s": "img/sitio/imagen-41.jpg", "c": "Planta acceso"}, {"s": "img/sitio/imagen-42.jpg", "c": "Segundo piso"}]}, {"id": "sucre", "nombre": "Casa Sucre", "estadoLabel": "En construcción", "ub": "Sucre 1545, Belgrano, CABA", "specs": [["Tipología", "Edificio de viviendas, PB y 9 pisos + 2 SS"], ["Plazo de obra", "30 meses"], ["Superficie", "6.200 m²"]], "amen": ["Piscina descubierta con solárium", "Gimnasio", "SUM", "Sector parrillas", "Jardín en pulmón de manzana", "Espacio de juegos infantiles", "Bicicletero", "Cocheras y bauleras"], "render": true, "nota": "", "gal": [{"s": "img/obras/sucre/foto-01.jpg", "c": "Fachada al atardecer"}, {"s": "img/sitio/imagen-43.jpg", "c": "Acceso y planta baja"}, {"s": "img/sitio/imagen-44.jpg", "c": "Piscina con solárium"}, {"s": "img/sitio/imagen-45.jpg", "c": "Living comedor"}, {"s": "img/sitio/imagen-46.jpg", "c": "Estar de unidad tipo"}], "planos": [{"s": "img/sitio/imagen-47.jpg", "c": "Planta baja"}, {"s": "img/sitio/imagen-48.jpg", "c": "Pisos 3 a 7"}, {"s": "img/sitio/imagen-49.jpg", "c": "Piso 9"}]}, {"id": "aimara", "nombre": "Edificio Aimará", "estadoLabel": "En construcción", "ub": "Matienzo 1701, Las Cañitas, CABA", "specs": [["Tipología", "Torre de viviendas en PH, PB y 13 pisos + 1 SS"], ["Plazo de obra", "40 meses"], ["Superficie", "3.925 m²"]], "amen": ["Green rooftop", "Sector parrillas", "9 cocheras", "Bike racks", "Local comercial en PB y piso 1"], "render": true, "nota": "", "gal": [{"s": "img/obras/aimara/foto-01.jpg", "c": "Fachada"}, {"s": "img/sitio/imagen-50.jpg", "c": "Frente y acceso en planta baja"}, {"s": "img/sitio/imagen-51.jpg", "c": "Living con terraza"}, {"s": "img/sitio/imagen-52.jpg", "c": "Cocina integrada"}, {"s": "img/sitio/imagen-53.jpg", "c": "Dormitorio principal"}], "planos": [{"s": "img/sitio/imagen-54.jpg", "c": "Unidad B — 3 ambientes, pisos 2 a 7"}, {"s": "img/sitio/imagen-55.jpg", "c": "Unidad A — 4 ambientes, piso 8"}, {"s": "img/sitio/imagen-56.jpg", "c": "Local comercial — planta baja y piso 1"}]}, {"id": "larrea", "nombre": "Casa Larrea", "estadoLabel": "Por iniciar", "ub": "Larrea 844, CABA", "specs": [["Tipología", "Edificio de viviendas, PB y 13 pisos + 1 SS"], ["Plazo de obra", "30 meses"], ["Superficie", "3.111 m²"]], "amen": ["Terraza en el último piso", "SUM", "Sector parrillas", "Bike parking (50)", "Local comercial en PB"], "render": true, "nota": "", "gal": [{"s": "img/obras/larrea/foto-01.jpg", "c": "Fachada sobre calle Larrea"}, {"s": "img/sitio/imagen-57.jpg", "c": "Detalle de balcones"}, {"s": "img/sitio/imagen-58.jpg", "c": "Terraza con parrillas"}, {"s": "img/sitio/imagen-59.jpg", "c": "Living comedor"}, {"s": "img/sitio/imagen-60.jpg", "c": "Cocina integrada"}], "planos": [{"s": "img/sitio/imagen-61.jpg", "c": "Planta baja"}, {"s": "img/sitio/imagen-62.jpg", "c": "Pisos 2 a 10"}, {"s": "img/sitio/imagen-63.jpg", "c": "Terraza — Piso 13"}]}, {"id": "cordoba4309", "nombre": "Av. Córdoba 4309", "estadoLabel": "Por iniciar", "ub": "Av. Córdoba 4309, Palermo, CABA", "specs": [["Tipología", "Edificio de viviendas, PB y 13 pisos + 1 SS"], ["Plazo de obra", "30 meses"], ["Superficie", "3.235 m²"]], "amen": ["Terraza de 86 m²", "SUM de 44 m²", "Patios en planta baja", "Espacio para bicicletas (49)", "Local comercial en PB"], "render": true, "nota": "", "gal": [{"s": "img/obras/cordoba4309/foto-01.jpg", "c": "Fachada sobre Av. Córdoba"}, {"s": "img/sitio/imagen-64.jpg", "c": "Living con balcón"}, {"s": "img/sitio/imagen-65.jpg", "c": "Comedor y expansión"}, {"s": "img/sitio/imagen-66.jpg", "c": "Cocina integrada al estar"}, {"s": "img/sitio/imagen-67.jpg", "c": "Dormitorio principal"}], "planos": [{"s": "img/sitio/imagen-68.jpg", "c": "Planta baja"}, {"s": "img/sitio/imagen-69.jpg", "c": "Pisos 2 a 10"}, {"s": "img/sitio/imagen-70.jpg", "c": "Terraza"}]}, {"id": "juncal", "nombre": "Casa Juncal", "estadoLabel": "Por iniciar", "ub": "Juncal 2463, CABA", "specs": [["Tipología", "Edificio de viviendas, PB y 13 pisos + 1 SS"], ["Plazo de obra", "30 meses"], ["Superficie", "3.110 m²"]], "amen": [], "render": true, "nota": "Estamos preparando los renders y planos de esta obra.", "gal": [{"s": "img/obras/juncal/foto-01.jpg", "c": "Vista del proyecto"}], "planos": []}, {"id": "alberdi833", "nombre": "Alberdi 833", "estadoLabel": "Finalizada", "ub": "Av. Juan Bautista Alberdi 833, CABA", "specs": [["Comitente", "Fideicomiso Alberdi 833"], ["Tipología", "Torre de viviendas en PH (180 unidades) y cocheras, 2 SS, PB y 19 pisos"], ["Plazo de obra", "36 meses"], ["Superficie", "14.600 m²"]], "amen": [], "render": false, "nota": "", "gal": [{"s": "img/obras/alberdi833/foto-01.jpg", "c": "Fachada sobre Av. Juan Bautista Alberdi"}, {"s": "img/sitio/imagen-71.jpg", "c": "La torre en contrapicado"}, {"s": "img/sitio/imagen-72.jpg", "c": "Hall de acceso"}, {"s": "img/sitio/imagen-73.jpg", "c": "Lobby con mural"}, {"s": "img/sitio/imagen-74.jpg", "c": "Solárium"}], "planos": []}, {"id": "corrientes3401", "nombre": "Av. Corrientes 3401", "estadoLabel": "Finalizada", "ub": "Av. Corrientes 3401, CABA", "specs": [["Comitente", "JNT Desarrollos"], ["Tipología", "Torre de viviendas en PH y cocheras, PB y 15 pisos + 2 SS"], ["Plazo de obra", "40 meses"], ["Superficie", "19.600 m²"]], "amen": ["Piscina y solárium", "Parrillas", "SUM", "Gimnasio", "Sala de cine", "Sauna"], "render": false, "nota": "", "gal": [{"s": "img/obras/corrientes3401/foto-01.jpg", "c": "Fachada sobre Av. Corrientes"}, {"s": "img/sitio/imagen-75.jpg", "c": "Piscina en el piso 15"}, {"s": "img/sitio/imagen-76.jpg", "c": "Parrillas en la terraza"}, {"s": "img/sitio/imagen-77.jpg", "c": "SUM con vista"}, {"s": "img/sitio/imagen-78.jpg", "c": "Sala de reuniones"}], "planos": [{"s": "img/sitio/imagen-79.jpg", "c": "Piso 15 — amenities"}, {"s": "img/sitio/imagen-80.jpg", "c": "Unidad D — 2 ambientes, pisos 2 a 14"}]}, {"id": "arricau", "nombre": "Paseo Arricau", "estadoLabel": "Finalizada", "ub": "Av. Torcuato de Alvear 251, Don Torcuato", "specs": [["Comitente", "Poblar S.A."], ["Tipología", "Locales comerciales y viviendas en PH, SS, PB y 4 pisos"], ["Plazo de obra", "30 meses"], ["Superficie", "9.830 m²"]], "amen": [], "render": false, "nota": "", "gal": [{"s": "img/obras/arricau/foto-01.jpg", "c": "Vista general desde la avenida"}, {"s": "img/sitio/imagen-81.jpg", "c": "Locales en planta baja"}, {"s": "img/sitio/imagen-82.jpg", "c": "Locales con fachada vegetada"}, {"s": "img/sitio/imagen-83.jpg", "c": "Esquina sobre Av. Torcuato de Alvear"}], "planos": []}, {"id": "maure4008", "nombre": "Maure 4008", "estadoLabel": "Finalizada", "ub": "Maure 4008, CABA", "specs": [["Comitente", "Fideicomiso Maure 4008"], ["Tipología", "Torre de viviendas en PH, PB y 9 pisos"], ["Plazo de obra", "24 meses"], ["Superficie", "2.164 m²"]], "amen": [], "render": false, "nota": "", "gal": [{"s": "img/obras/maure4008/foto-01.jpg", "c": "Fachada sobre Maure"}, {"s": "img/sitio/imagen-84.jpg", "c": "Esquina del edificio"}, {"s": "img/sitio/imagen-85.jpg", "c": "Acceso y local en planta baja"}, {"s": "img/sitio/imagen-86.jpg", "c": "Detalle de balcones"}], "planos": []}, {"id": "beruti", "nombre": "Beruti 2783", "estadoLabel": "Finalizada", "ub": "Beruti 2783, CABA", "specs": [["Comitente", "JNT Desarrollos"], ["Tipología", "Torre de viviendas en PH, PB y 9 pisos"], ["Plazo de obra", "24 meses"], ["Superficie", "1.747 m²"]], "amen": ["Terraza con parrilla"], "render": false, "nota": "", "gal": [{"s": "img/obras/beruti/foto-01.jpg", "c": "Fachada con parasoles de madera"}, {"s": "img/sitio/imagen-87.jpg", "c": "Balcones y parasoles desde la vereda"}, {"s": "img/sitio/imagen-88.jpg", "c": "Living con ventanal"}, {"s": "img/sitio/imagen-89.jpg", "c": "Cocina con barra y estar"}], "planos": []}, {"id": "hotel_iru", "nombre": "Hotel Irú", "estadoLabel": "Finalizada", "ub": "Puerto Iguazú, Provincia de Misiones", "specs": [["Comitente", "SATSAID"], ["Tipología", "Hotel"], ["Plazo de obra", "24 meses"], ["Superficie", "7.800 m²"]], "amen": [], "render": false, "nota": "Imágenes de referencia del hotel. Las fotos de la obra se van a incorporar.", "gal": [{"s": "img/obras/hotel_iru/foto-01.jpg", "c": "Fachada entre los árboles"}, {"s": "img/sitio/imagen-90.jpg", "c": "El hotel en el parque"}, {"s": "img/sitio/imagen-91.jpg", "c": "Piscina, vista aérea"}, {"s": "img/sitio/imagen-92.jpg", "c": "Salón de convenciones"}], "planos": []}];
+  var byId = {}; OBRAS.forEach(function(o){ byId[o.id]=o; });
+
+
+  /* portada: las fotos van rotando con un fundido suave */
+  (function(){
+    var sl=[].slice.call(document.querySelectorAll('#heroSlides .hero-slide'));
+    if(sl.length<2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function cargar(el){ var u=el.getAttribute('data-bg'); if(u){ el.style.backgroundImage="url('"+u+"')"; el.removeAttribute('data-bg'); } }
+    var i=0; cargar(sl[1]);
+    setInterval(function(){
+      if(document.hidden) return;
+      var sig=(i+1)%sl.length;
+      cargar(sl[sig]);
+      sl[sig].style.animation='none'; void sl[sig].offsetWidth; sl[sig].style.animation='';
+      sl[sig].classList.add('on'); sl[i].classList.remove('on');
+      i=sig; cargar(sl[(i+1)%sl.length]);
+    }, 5500);
+  })();
+
+  /* nav */
+  var nav=document.getElementById('nav'), menu=document.getElementById('menu'), tog=document.getElementById('navToggle');
+  function onScroll(){ nav.classList.toggle('solid', window.scrollY>40); }
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+  tog.addEventListener('click', function(){
+    var open=menu.classList.toggle('open'); tog.setAttribute('aria-expanded', open?'true':'false');
+  });
+  menu.addEventListener('click', function(e){ if(e.target.tagName==='A'){ menu.classList.remove('open'); tog.setAttribute('aria-expanded','false'); } });
+
+  /* cifras: el valor final ya está en el HTML; solo se anima si hay JS */
+  var cifras=[["30", "+"], ["40", ""], ["175", " mil"], ["100", "%"]];
+  var band=document.querySelector('.cifras');
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return; io.disconnect();
+        document.querySelectorAll('.cifras .n').forEach(function(el,i){
+          var target=parseInt(cifras[i][0],10), suf=cifras[i][1], t0=null, dur=1100;
+          el.textContent='0'+suf;
+          function step(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/dur); var v=Math.round(target*(1-Math.pow(1-p,3)));
+            el.textContent=v+suf; if(p<1) requestAnimationFrame(step); }
+          requestAnimationFrame(step);
+        });
+      });
+    },{threshold:.4});
+    io.observe(band);
+  }
+
+  var grid=document.getElementById('grid');
+
+  /* ficha */
+  var ficha=document.getElementById('ficha'), gal=document.getElementById('gal'),
+      panel=document.getElementById('panel'), planosWrap=document.getElementById('planosWrap'),
+      titulo=document.getElementById('fichaTitulo'), ultimo=null;
+  function abrir(id){
+    var o=byId[id]; if(!o) return;
+    titulo.textContent=o.nombre;
+    gal.innerHTML=o.gal.map(function(g){
+      return '<figure><img src="'+g.s+'" alt="'+o.nombre+' — '+g.c+'" loading="lazy"><figcaption>'+g.c+'</figcaption></figure>';
+    }).join('') + (o.render ? '<p class="nota-render">Las imágenes de esta obra son renders del proyecto.</p>' : (o.nota ? '<p class="nota-render">'+o.nota+'</p>' : ''));
+    planosWrap.innerHTML = o.planos.length ? '<h4>Planos</h4><div class="g">'+o.planos.map(function(p){
+      return '<figure><img src="'+p.s+'" alt="Plano: '+p.c+'" loading="lazy"><figcaption>'+p.c+'</figcaption></figure>';
+    }).join('')+'</div>' : '';
+    panel.innerHTML='<h3>'+o.nombre+'</h3><p class="ub">'+o.ub+'</p>'+
+      '<dl>'+o.specs.map(function(s){ return '<dt>'+s[0]+'</dt><dd>'+s[1]+'</dd>'; }).join('')+
+      '<dt>Estado</dt><dd style="border-bottom:0">'+o.estadoLabel+'</dd></dl>'+
+      (o.amen.length ? '<ul class="am">'+o.amen.map(function(a){ return '<li>'+a+'</li>'; }).join('')+'</ul>' : '')+
+      '<a class="btn cta" href="#contacto" data-cerrar>Consultar por esta obra</a>';
+    ficha.classList.add('open'); ficha.scrollTop=0; document.body.style.overflow='hidden';
+    document.getElementById('cerrarFicha').focus();
+  }
+  function cerrar(){ ficha.classList.remove('open'); document.body.style.overflow=''; if(ultimo) ultimo.focus(); }
+  grid.addEventListener('click', function(e){
+    var c=e.target.closest('.obra'); if(!c) return; ultimo=c; abrir(c.dataset.id);
+  });
+  document.getElementById('cerrarFicha').addEventListener('click', cerrar);
+  ficha.addEventListener('click', function(e){ if(e.target.closest('[data-cerrar]')) cerrar(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && ficha.classList.contains('open')) cerrar(); });
+
+  /* formulario: Netlify si está publicado en Netlify; si no, abre el correo */
+  var form=document.getElementById('form'), estado=document.getElementById('estado');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var b=form.querySelector('button[type=submit]'), txt=b.textContent;
+    estado.className='estado'; estado.textContent=''; b.disabled=true; b.textContent='Enviando...';
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(new FormData(form)).toString()})
+    .then(function(r){ if(!r.ok) throw new Error(r.status);
+      form.reset(); estado.className='estado ok'; estado.textContent='Gracias por tu consulta. Te respondemos a la brevedad.'; })
+    .catch(function(){
+      var d=new FormData(form);
+      var cuerpo='Nombre: '+(d.get('nombre')||'')+'\nEmail: '+(d.get('email')||'')+'\n\n'+(d.get('mensaje')||'');
+      var url='mailto:Info@construccionesdb.com?subject='+encodeURIComponent('Consulta desde la web')+'&body='+encodeURIComponent(cuerpo);
+      estado.className='estado err';
+      estado.innerHTML='Abrimos tu correo para enviar la consulta. Si no se abre, escribinos a <a href="mailto:Info@construccionesdb.com">Info@construccionesdb.com</a>.';
+      window.open(url,'_blank');
+    })
+    .then(function(){ b.disabled=false; b.textContent=txt; });
+  });
+})();
+</script>
+</body>
+</html>
